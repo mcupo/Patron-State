@@ -1,28 +1,24 @@
-package ar.edu.ort;
+package ar.edu.ort.sinsingleton;
 
-public class EstadoVendido implements Estado {
+public class EstadoVendiendoChicle implements Estado {
 		 
     MaquinaDeChicles maquinaDeChicles;
  
-    public EstadoVendido(MaquinaDeChicles maquinaDeChicles) {
+    public EstadoVendiendoChicle(MaquinaDeChicles maquinaDeChicles) {
         this.maquinaDeChicles = maquinaDeChicles;
     }
-    
     @Override
 	public void insertarMoneda() {
 		System.out.println("Por favor espere, su chicle esta saliendo");
 	}
- 
     @Override
 	public void sacarMoneda() {
 		System.out.println("Lo lamentamos, usted ya giro la manivela");
 	}
- 
     @Override
 	public void girarManivela() {
 		System.out.println("Girar la manivela dos veces no le va a dar otro chicle!");
 	}
- 
     @Override
 	public void entregarChicle() {
 		maquinaDeChicles.soltarChicle();
@@ -33,10 +29,8 @@ public class EstadoVendido implements Estado {
 			maquinaDeChicles.setEstado(new EstadoSinStock(maquinaDeChicles));
 		}
 	}
-	
     @Override
 	public void recargar() { }
- 
     @Override
 	public String toString() {
 		return "entregando un chicle";

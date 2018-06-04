@@ -1,4 +1,4 @@
-package ar.edu.ort;
+package ar.edu.ort.sinsingleton;
 
 public class Test {
 	
