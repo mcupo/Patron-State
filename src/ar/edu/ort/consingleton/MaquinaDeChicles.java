@@ -9,49 +9,41 @@ public class MaquinaDeChicles {
 	public MaquinaDeChicles(int numeroDeChicles) {
 		this.cantidad = numeroDeChicles;
  		if (numeroDeChicles > 0) {
-			estado = new EstadoSinMoneda();
+			estado = EstadoSinMoneda.instancia();
 		} else {
-			estado = new EstadoSinStock();
+			estado = EstadoSinStock.instancia();
 		}
 	}
- 
 	public void insertarMoneda() {
 		estado.insertarMoneda(this);
 	}
- 
 	public void sacarMoneda() {
 		estado.sacarMoneda(this);
 	}
- 
 	public void girarManivela() {
 		estado.girarManivela(this);
 		estado.entregarChicle(this);
 	}
- 
-	void soltarChicle() {
+	public void soltarChicle() {
 		System.out.println("Un chicle viene rodando...");
 		if (cantidad != 0) {
 			cantidad = cantidad - 1;
 		}
 	}
- 
-	int getCantidad() {
-		return cantidad;
-	}
- 
-	void recargar(int count) {
+	public void recargar(int count) {
 		this.cantidad += count;
 		System.out.println("\nLa máquina acaba de ser recargarda; su nueva cantidad es: " + this.cantidad);
 		estado.recargar(this);
 	}
-
-	void setEstado(Estado estado) {
+	public void setEstado(Estado estado) {
 		this.estado = estado;
 	}
     public Estado getState() {
         return estado;
     }
- 
+	public int getCantidad() {
+		return cantidad;
+	}
 	public String toString() {
 		StringBuffer result = new StringBuffer();
 		result.append("\nMáquina de chicles T2000");

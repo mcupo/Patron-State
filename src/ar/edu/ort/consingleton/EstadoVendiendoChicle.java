@@ -1,7 +1,17 @@
 package ar.edu.ort.consingleton;
 
+//Clase EstadoConcreto declarada como Singleton
 public class EstadoVendiendoChicle implements Estado {
 	
+	private static Estado instancia;
+	private EstadoVendiendoChicle() {}
+	
+	public static Estado instancia() {
+	if (instancia==null) {
+		instancia = new EstadoVendiendoChicle();
+	}
+		return instancia;
+	}
     @Override
 	public void insertarMoneda(MaquinaDeChicles maquinaDeChicles) {
 		System.out.println("Por favor espere, su chicle esta saliendo");
@@ -18,10 +28,10 @@ public class EstadoVendiendoChicle implements Estado {
 	public void entregarChicle(MaquinaDeChicles maquinaDeChicles) {
 		maquinaDeChicles.soltarChicle();
 		if (maquinaDeChicles.getCantidad() > 0) {
-			maquinaDeChicles.setEstado(new EstadoSinMoneda());
+			maquinaDeChicles.setEstado(EstadoSinMoneda.instancia());
 		} else {
 			System.out.println("\nUps, ya no hay más chicles!");
-			maquinaDeChicles.setEstado(new EstadoSinStock());
+			maquinaDeChicles.setEstado(EstadoSinStock.instancia());
 		}
 	}
     @Override
