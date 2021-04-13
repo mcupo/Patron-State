@@ -40,8 +40,11 @@ public class MaquinaDeChicles {
 	}
  
 	void recargar(int count) {
-		this.cantidad += count;
-		System.out.println("La máquina acaba de ser recargarda; su nueva cantidad es: " + this.cantidad);
+		if(cantidad==0)
+		{
+			this.cantidad = count;
+			System.out.println("\nLa máquina acaba de ser recargarda; su nueva cantidad es: " + this.cantidad);
+		}
 		estado.recargar();
 	}
 
