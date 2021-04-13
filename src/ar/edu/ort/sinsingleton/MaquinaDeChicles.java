@@ -3,8 +3,8 @@ package ar.edu.ort.sinsingleton;
 //Clase Contexto
 public class MaquinaDeChicles {
  
-	Estado estado;
-	int cantidad = 0;
+	private Estado estado;
+	private int cantidad = 0;
  
 	public MaquinaDeChicles(int numeroDeChicles) {
 		this.cantidad = numeroDeChicles;
